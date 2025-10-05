@@ -1,0 +1,40 @@
+movie_df=df[df["type"] == "movie"].copy()
+
+"""This uses boolean indexing to filter the DataFrame.
+Only rows where the condition is True are kept.
+So, you get a new DataFrame containing only movies."""
+movie_df["duration_int"]=movie_df["duration_int"].str.replace("min","").astype(int)
+"""movie_df["duration_int"]
+Accesses the column "duration_int" in the movie_df DataFrame.
+This column likely contains durations like "120 min", "95 min", etc.
+.str.replace("min", "")
+.str allows string operations on a pandas Series.
+.replace("min", "") removes the substring "min" from each string."""
+
+
+
+
+plt.Figure(figsize=(8,6))
+plt.hist(movie_df["duration_int"],bins=30,color="red",edgecolor="black")
+plt.title("Durations of movies")
+plt.ylabel("number of movies")
+plt.xlabel("duration in time")
+plt.tight_layout()
+plt.show()
+
+
+
+
+movie_df=df[df["type"] == "movie"].copy()
+movie_df["duration_int"]=movie_df["duration"].str.replace("min","").astype(int)
+
+
+
+# Histogram of movie durations
+plt.figure(figsize=(8,5))
+plt.hist(movie_df["duration_int"], bins=20, color='skyblue', edgecolor='black')
+plt.title("Distribution of Movie Durations")
+plt.xlabel("Duration (minutes)")
+plt.ylabel("Number of Movies")
+plt.grid(axis='y', alpha=0.75)
+plt.show()
